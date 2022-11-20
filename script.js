@@ -5,12 +5,18 @@ const forecastUrl = 'forecast?'
 let units = '&units=imperial'
 let searches = []
 
+/**
+ * Listener for the switch button that changes the units.
+ */
 const unitBtn = document.querySelector('#unitSwitch')
 unitBtn.addEventListener('click', e => {
   units = e.target.checked ? '&units=metric' : '&units=imperial'
   getForecast(document.querySelector('#forecastCity').textContent)
 })
 
+/**
+ * Listener for the search city field.
+ */
 const searchForm = document.querySelector('#searchForm')
 searchForm.addEventListener('submit', e => {
   e.preventDefault()
@@ -23,11 +29,19 @@ searchForm.addEventListener('submit', e => {
   localStorage.setItem('searches', JSON.stringify(searches))
 })
 
+/**
+ * Listener for all buttons in the search history list.
+ */
 const searchList = document.querySelector('#searchHistory')
 searchList.addEventListener('click', e => {
   getForecast(e.target.textContent)
 })
 
+/**
+ * Helper function that accepts a forecast object to create the individual cards.
+ * @param {Object} forecast 
+ * @returns HTML div
+ */
 function createCard(forecast) {
   const divEl = document.createElement('div')
   divEl.classList.add('forecast-card')
@@ -60,7 +74,10 @@ function createCard(forecast) {
   return divEl
 }
 
-
+/**
+ * Gets the current forecast of the city parameter.
+ * @param {String} city 
+ */
 function getCurrentForecast(city) {
   fetch(baseUrl + currentUrl + apiKey + units + '&q=' + city)
     .then(function (res) {
@@ -84,6 +101,10 @@ function getCurrentForecast(city) {
     })
 }
 
+/**
+ * Gets the weekly forecast of the city parameter.
+ * @param {String} city 
+ */
 function getWeeklyForecast(city) {
   fetch(baseUrl + forecastUrl + apiKey + units + '&q=' + city)
     .then(function (res) {
@@ -108,6 +129,10 @@ function getWeeklyForecast(city) {
     })
 }
 
+/**
+ * Accepts a city parameter which retrieves the forecast of that city.
+ * @param {String} city
+ */
 function getForecast(city) {
   document.querySelector('#current-forecast').textContent = ''
   document.querySelector('#weekly-forecast').textContent = ''
@@ -117,6 +142,9 @@ function getForecast(city) {
   getWeeklyForecast(city)
 }
 
+/**
+ * Retrieves the search history from local storage and displays it in a list.
+ */
 function init() {
   searches = JSON.parse(localStorage.getItem('searches'))
   const historyList = document.querySelector('#searchHistory')
