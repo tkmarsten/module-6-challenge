@@ -6,14 +6,20 @@ A weather application that uses the OpenWeather API to get the current weather, 
 
 ![Image of homepage](homepage.png)
 
+## Known Issues
+
+- Search history allows city to be search multiple times
+- No error checking on incorrect city
+- Not fully responsive, mobile friendly
+- Weather can load slowly occasionally
+
 ## Installation
 
 N/A
 
 ## Usage
 
-Use the search bar to begin searching cities.
-Visit the deployed application [here](https://tkmarsten.github.io/weather-app)
+Use the search bar to begin searching cities. Visit the deployed application [here.](https://tkmarsten.github.io/weather-app)
 
 ## Contribution
 
