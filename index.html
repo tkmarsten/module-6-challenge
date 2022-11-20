@@ -5,11 +5,40 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+  <title>Weather Forecast App</title>
 </head>
 
 <body>
+  <header class="text-center py-4">
+    <h1>The Weather Channel</h1>
+  </header>
 
+  <main class="text-center mx-4 mt-4">
+    <h2 id="forecastCity"></h2>
+    <aside>
+      <div class="form-check form-switch">
+        <label class="form-check-label" for="unitSwitch">Metric toggle button</label>
+        <input class="form-check-input" type="checkbox" role="switch" id="unitSwitch">
+      </div>
+      <form id="searchForm">
+        <input type="text" class="form-control" id="searchCity" placeholder="Search for a city">
+      </form>
+      <ul id="searchHistory" class="p-0 mt-4"></ul>
+    </aside>
+    <div id="current-forecast" class="mt-4">
+    </div>
+    <div id="weekly-forecast" class="row row-cols-5 g-4 mt-4">
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script src="./script.js"></script>
 </body>
 
 </html>

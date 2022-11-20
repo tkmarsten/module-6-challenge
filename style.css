@@ -1,0 +1,46 @@
+li {
+  list-style: none;
+}
+
+main {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "current search"
+    "weekly search";
+  grid-template-columns: 3fr 1fr;
+  gap: 0 50px;
+}
+
+header {
+  grid-area: header;
+  background-color: rgb(149, 216, 252);
+}
+
+aside {
+  grid-area: search;
+}
+
+#current-forecast {
+  grid-area: current;
+}
+
+#weekly-forecast {
+  grid-area: weekly;
+}
+
+.forecast-card {
+  border: 0px solid black;
+}
+
+#searchHistory > li {
+  margin: 5px;
+}
+
+#searchHistory > li > button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  background-color: rgb(251, 217, 124);
+}
