@@ -67,6 +67,7 @@ p {
 }
 
 .weather {
+  display: none;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -83,7 +84,7 @@ p {
 }
 
 .details {
-  display: flex;
+  display: none;
   justify-content: space-between;
 }
 
