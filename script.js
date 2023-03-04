@@ -2,40 +2,8 @@ const apiKey = 'appid=2631366e563930701e1a8536cd28c4ee'
 const baseUrl = 'https://api.openweathermap.org/data/2.5/'
 const currentUrl = 'weather?'
 const forecastUrl = 'forecast?'
-let units = '&units=imperial'
+let units = '&units=metric'
 let searches = []
-
-/**
- * Listener for the switch button that changes the units.
- */
-const unitBtn = document.querySelector('#unitSwitch')
-unitBtn.addEventListener('click', e => {
-  units = e.target.checked ? '&units=metric' : '&units=imperial'
-  getForecast(document.querySelector('#forecastCity').textContent)
-})
-
-/**
- * Listener for the search city field.
- */
-const searchForm = document.querySelector('#searchForm')
-searchForm.addEventListener('submit', e => {
-  e.preventDefault()
-
-  const city = document.querySelector('#searchCity').value
-
-  getForecast(city)
-
-  searches.push(city)
-  localStorage.setItem('searches', JSON.stringify(searches))
-})
-
-/**
- * Listener for all buttons in the search history list.
- */
-const searchList = document.querySelector('#searchHistory')
-searchList.addEventListener('click', e => {
-  getForecast(e.target.textContent)
-})
 
 /**
  * Helper function that accepts a forecast object to create the individual cards.
@@ -157,6 +125,14 @@ function init() {
       historyList.append(listEl)
     })
   }
+
+  fetch(baseUrl + currentUrl + apiKey + units + '&q=' + 'Seattle')
+    .then(function (res) {
+      return res.json()
+    })
+    .then(function (data) {
+      console.log(data)
+    })
 }
 
 init()

@@ -1,54 +1,78 @@
-li {
-  list-style: none;
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
 }
 
-main {
+body {
+  height: 100svh;
+  height: 100vh;
   display: grid;
-  grid-template-areas:
-    "header header"
-    "current search"
-    "weekly search";
-  grid-template-columns: 3fr 1fr;
-  gap: 0 50px;
+  place-content: center;
+  background: #696969;
 }
 
-header {
-  grid-area: header;
-  background-color: rgb(149, 216, 252);
+.wrapper {
+  position: relative;
+  width: 400px;
+  height: min-content;
+  background: #fff;
+  padding: 28px 32px;
+  overflow: hidden;
+  border-radius: 18px;
+  transition: 0.6s ease-out;
 }
 
-aside {
-  grid-area: search;
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#current-forecast {
-  grid-area: current;
+.search-input {
+  width: 80%;
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding-left: 20px;
 }
 
-#weekly-forecast {
-  grid-area: weekly;
+.search-bar input::placeholder {
+  font-size: 20px;
+  text-transform: none;
 }
 
-.forecast-card {
-  border: 0px solid black;
+.search-button {
+  cursor: pointer;
+  width: 50px;
+  aspect-ratio: 1;
+  background: none;
+  border-radius: 50%;
+  font-size: 22px;
+  transition: 0.4s ease;
 }
 
-#searchForm > button {
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  width: 100%;
-  background-color: rgb(149, 216, 252);
+.search-button:hover {
+  background: #ddd;
 }
 
-#searchHistory > li {
-  margin: 5px;
+.search-bar i {
+  font-size: 22px;
 }
 
-#searchHistory > li > button {
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  width: 100%;
-  background-color: rgb(251, 217, 124);
+.weather {
+  text-align: center;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.humidity,
+.wind {
+  display: flex;
+  align-items: center;
 }
