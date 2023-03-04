@@ -1,15 +1,43 @@
-const apiKey = 'appid=2631366e563930701e1a8536cd28c4ee'
-const baseUrl = 'https://api.openweathermap.org/data/2.5/'
-const currentUrl = 'weather?'
-const forecastUrl = 'forecast?'
+const APIKey = '&appid=2631366e563930701e1a8536cd28c4ee'
+const baseURL = 'https://api.openweathermap.org/data/2.5/'
+const currentParam = 'weather?'
+const forecastParam = 'forecast?'
 let units = '&units=metric'
-let searches = []
+
+const searchButton = document.querySelector('.search-button')
+
+searchButton.addEventListener('click', () => {
+  const location = document.querySelector('.search-input').value
+
+  fetch(baseURL + currentParam + units + '&q=' + location + APIKey)
+    .then((res) => {
+      return res.json()
+    })
+    .then((data) => {
+      updateWeather(data)
+    })
+})
+
+function updateWeather(data) {
+  const icon = document.querySelector('.icon')
+  const temperature = document.querySelector('.temperature')
+  const description = document.querySelector('.description')
+  const humidity = document.querySelector('.humidity span')
+  const wind = document.querySelector('.wind span')
+
+  icon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@4x.png')
+  temperature.innerHTML = data.main.temp
+  description.innerHTML = data.weather[0].description
+  humidity.innerHTML = data.main.humidity + '%'
+  wind.innerHTML = data.wind.speed + 'Km/h'
+}
+
+
 
 /**
  * Helper function that accepts a forecast object to create the individual cards.
  * @param {Object} forecast 
  * @returns HTML div
- */
 function createCard(forecast) {
   const divEl = document.createElement('div')
   divEl.classList.add('forecast-card')
@@ -45,7 +73,6 @@ function createCard(forecast) {
 /**
  * Gets the current forecast of the city parameter.
  * @param {String} city 
- */
 function getCurrentForecast(city) {
   fetch(baseUrl + currentUrl + apiKey + units + '&q=' + city)
     .then(function (res) {
@@ -71,8 +98,7 @@ function getCurrentForecast(city) {
 
 /**
  * Gets the weekly forecast of the city parameter.
- * @param {String} city 
- */
+ * @param {String} city
 function getWeeklyForecast(city) {
   fetch(baseUrl + forecastUrl + apiKey + units + '&q=' + city)
     .then(function (res) {
@@ -100,7 +126,6 @@ function getWeeklyForecast(city) {
 /**
  * Accepts a city parameter which retrieves the forecast of that city.
  * @param {String} city
- */
 function getForecast(city) {
   document.querySelector('#current-forecast').textContent = ''
   document.querySelector('#weekly-forecast').textContent = ''
@@ -110,29 +135,4 @@ function getForecast(city) {
   getWeeklyForecast(city)
 }
 
-/**
- * Retrieves the search history from local storage and displays it in a list.
- */
-function init() {
-  searches = JSON.parse(localStorage.getItem('searches'))
-  const historyList = document.querySelector('#searchHistory')
-  if (searches) {
-    searches.forEach(cityName => {
-      const listEl = document.createElement('li')
-      const buttonEl = document.createElement('button')
-      buttonEl.textContent = cityName
-      listEl.append(buttonEl)
-      historyList.append(listEl)
-    })
-  }
-
-  fetch(baseUrl + currentUrl + apiKey + units + '&q=' + 'Seattle')
-    .then(function (res) {
-      return res.json()
-    })
-    .then(function (data) {
-      console.log(data)
-    })
-}
-
-init()
+*/

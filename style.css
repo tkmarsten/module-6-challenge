@@ -14,6 +14,10 @@ body {
   background: #696969;
 }
 
+p {
+  margin: 0;
+}
+
 .wrapper {
   position: relative;
   width: 400px;
@@ -64,6 +68,18 @@ body {
 
 .weather {
   text-align: center;
+  margin-bottom: 2rem;
+}
+
+.temperature {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 
 .details {
@@ -75,4 +91,19 @@ body {
 .wind {
   display: flex;
   align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.humidity > div,
+.wind > div {
+  margin-left: 16px;
+}
+
+.details-metric {
+  font-size: 22px;
+}
+
+.details-icon {
+  font-size: 22px;
 }
