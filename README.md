@@ -6,13 +6,6 @@ A weather application that uses the OpenWeatherMap API to get the current weathe
 
 ![Image of homepage](homepage.png)
 
-## Known Issues
-
-- Search history allows city to be search multiple times
-- No error checking on incorrect city
-- Not fully responsive, mobile friendly
-- Weather can load slowly occasionally
-
 ## Installation
 
 N/A
