@@ -2,7 +2,7 @@
 
 ## Description
 
-A weather application that uses the OpenWeather API to get the current weather, as well as the next 5 days of the weekly forecast.
+A weather application that uses the OpenWeatherMap API to get the current weather, as well as the next 5 days of the weekly forecast.
 
 ![Image of homepage](homepage.png)
 
